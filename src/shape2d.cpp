@@ -2,10 +2,13 @@
 
 #include "shape.h"
 
+#include <cmath>
+
 Shape2D::Shape2D(
-) : ShapeBase(  // Call parent constructor
-    2           // Number of sides
-)
+    int number_of_sides,
+    double length,
+    double width
+) : ShapeBase( -1 )
 {
 }
 

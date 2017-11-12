@@ -6,7 +6,11 @@
 
 class Shape2D : public ShapeBase {
 public:
-    Shape2D();
+    Shape2D(
+        int number_of_sides,
+        double length,
+        double width
+    );
     ~Shape2D();
     virtual const char* getLabel() const = 0;
     virtual double perimeter() const = 0;

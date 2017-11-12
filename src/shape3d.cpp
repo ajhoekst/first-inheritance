@@ -3,9 +3,11 @@
 #include "shape.h"
 
 Shape3D::Shape3D(
-) : ShapeBase(  // Call parent constructor
-    3           // Number of sides
-)
+    int number_of_sides,
+    double length,
+    double width,
+    double height
+) : ShapeBase( -1 )
 {
 }
 

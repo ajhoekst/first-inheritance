@@ -8,4 +8,5 @@ public:
         double length
     );
     ~Square();
+    virtual const char* getLabel() const;
 };
