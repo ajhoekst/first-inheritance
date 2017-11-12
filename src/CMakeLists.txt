@@ -8,6 +8,15 @@ set(SRCS
     shape.cpp
     shape2d.cpp
     shape3d.cpp
+    triangle.cpp
+    rectangle.cpp
+    square.cpp
+    circle.cpp
+    box.cpp
+    cube.cpp
+    sphere.cpp
+    tetrahedron.cpp
+    pyramid.cpp
 )
 
 add_library(inheritance STATIC ${SRCS})
