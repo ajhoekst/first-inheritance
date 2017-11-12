@@ -1,9 +1,6 @@
 #include "gtest/gtest.h"
 
-#include "triangle.h"
-#include "rectangle.h"
-#include "square.h"
-#include "circle.h"
+#include "inheritance.h"
 
 #define _USE_MATH_DEFINES
 #include <cmath>

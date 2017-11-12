@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-#include "square.h"
+#include "inheritance.h"
 
 int main(int argc, char **argv)
 {

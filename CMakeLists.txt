@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 2.8)
 project(inheritance)
 
+set(LEVEL "basic" CACHE STRING "Challenge level to test at (default: basic)")
+
 # We need thread support
 find_package(Threads REQUIRED)
 
