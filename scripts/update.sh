@@ -10,5 +10,8 @@ else
     echo "No changes made..."
 fi
 echo "Updating code..."
+git checkout master
 git fetch
+git pull
+git checkout develop
 git rebase master develop
