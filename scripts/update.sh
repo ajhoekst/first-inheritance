@@ -1,7 +1,7 @@
 #!/bin/bash
 
 CHANGES=$(git diff-index --name-only HEAD --)
-if [ ! -z $CHANGES ]
+if [ ! -z "$CHANGES" ]
 then
     echo "Saving changes..."
     git add .;
