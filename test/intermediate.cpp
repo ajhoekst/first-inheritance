@@ -2,6 +2,9 @@
 
 #include "inheritance.h"
 
+#define _USE_MATH_DEFINES
+#include <cmath>
+
 int main(int argc, char **argv)
 {
     ::testing::InitGoogleTest(&argc, argv);
@@ -24,56 +27,56 @@ TEST(BoxTest, Sides)
     EXPECT_EQ(12, b.getSides());
 }
 // End Of Sides
-// Perimeter
-TEST(BoxTest, PerimeterPositiveSideZero)
+// Volume
+TEST(BoxTest, VolumePositiveSideZero)
 {
     // Test different parameters being 0
     // Null case (all 0)
     Box b(0, 0, 0);
-    EXPECT_EQ(0, b.perimeter());
+    EXPECT_EQ(0, b.volume());
 
     // length 0
     Box b2(1, 0, 0);
-    EXPECT_EQ(4, b2.perimeter());
+    EXPECT_EQ(0, b2.volume());
 
     // width 0
     Box b3(0, 2, 0);
-    EXPECT_EQ(8, b3.perimeter());
+    EXPECT_EQ(0, b3.volume());
 
     // height 0
     Box b4(0, 0, 3);
-    EXPECT_EQ(12, b4.perimeter());
+    EXPECT_EQ(0, b4.volume());
 }
-TEST(BoxTest, PerimeterPositiveSideNegative)
+TEST(BoxTest, VolumePositiveSideNegative)
 {
     // for reference 
-    // Perimeter = 4 * (l + w + h)
-    // For 1, 2, 3 -> 24 
+    // Volume = l * w * h
+    // For 1, 2, 3 -> 6
 
     // Test different parameters being negative
     // Null case (all negative)
     Box b(-1, -2, -3);
-    EXPECT_EQ(24, b.perimeter());
+    EXPECT_EQ(6, b.volume());
 
     // length -1
     Box b2(-1, 2, 3);
-    EXPECT_EQ(24, b2.perimeter());
+    EXPECT_EQ(6, b2.volume());
 
     // width -2
     Box b3(1, -2, 3);
-    EXPECT_EQ(24, b3.perimeter());
+    EXPECT_EQ(6, b3.volume());
 
-    // height --3
+    // height -3
     Box b4(1, 2, -3);
-    EXPECT_EQ(24, b4.perimeter());
+    EXPECT_EQ(6, b4.volume());
 }
-TEST(BoxTest, PerimeterMethod)
+TEST(BoxTest, VolumeMethod)
 {
-    // 4 * (3 + 4 + 5) = 94
+    // 3 * 4 * 5 = 60
     Box b(3, 4, 5);
-    EXPECT_EQ(48, b.perimeter());
+    EXPECT_EQ(60, b.volume());
 }
-// End Of Perimeter
+// End Of Volume
 // Area
 TEST(BoxTest, AreaPositiveSideZero)
 {
@@ -141,31 +144,31 @@ TEST(CubeTest, Sides)
     EXPECT_EQ(12, c.getSides());
 }
 // End Of Sides
-// Perimeter
-TEST(CubeTest, PerimeterPositiveSideZero)
+// Volume
+TEST(CubeTest, VolumePositiveSideZero)
 {
     // Null case
     Cube c(0);
-    EXPECT_EQ(0, c.perimeter());
+    EXPECT_EQ(0, c.volume());
 }
-TEST(CubeTest, PerimeterPositiveSideNegative)
+TEST(CubeTest, VolumePositiveSideNegative)
 {
     // for reference 
-    // Perimeter = 4 * (3 * l)
-    // For 3 -> 36 
+    // Volume = s ^ 3
+    // For 3 -> 27 
 
     // Test different parameters being negative
     // Null case (all negative)
     Cube c(-3);
-    EXPECT_EQ(36, c.perimeter());
+    EXPECT_EQ(27, c.volume());
 }
-TEST(CubeTest, PerimeterMethod)
+TEST(CubeTest, VolumeMethod)
 {
-    // 4 * (4 + 4 + 4) = 48
+    // 4 ^ 3 = 64
     Cube c(4);
-    EXPECT_EQ(48, c.perimeter());
+    EXPECT_EQ(64, c.volume());
 }
-// End Of Perimeter
+// End Of Volume
 // Area
 TEST(CubeTest, AreaPositiveSideZero)
 {
@@ -192,26 +195,46 @@ TEST(SphereTest, Label)
     EXPECT_STREQ("Sphere", c.getLabel());
 }
 // End Of Label
-// Sides/Perimeter
+// Sides
 TEST(SphereTest, Sides)
 {
-    // This is trival because the getSides and perimeter should return 0...
-
     // # of sides for sphere is defined to be INF
     // Let's use 0 though
     Sphere c(1);
     EXPECT_EQ(0, c.getSides());
-    EXPECT_EQ(0, c.perimeter());
 
     Sphere c2(-1);
     EXPECT_EQ(0, c2.getSides());
-    EXPECT_EQ(0, c2.perimeter());
 
     Sphere c3(0);
     EXPECT_EQ(0, c3.getSides());
-    EXPECT_EQ(0, c3.perimeter());
 }
-// End Of Perimeter
+// End Of Sides
+// Volume
+TEST(SphereTest, VolumePositiveSideZero)
+{
+    // Null case
+    Sphere c(0);
+    EXPECT_EQ(0, c.volume());
+}
+TEST(SphereTest, VolumePositiveSideNegative)
+{
+    // for reference 
+    // Volume = 4/3 * pi * r ^ 3
+    // For 3 -> 4/3 * pi * 27 = 36 * pi
+
+    // Test different parameters being negative
+    // Null case (all negative)
+    Sphere c(-3);
+    EXPECT_EQ(36 * M_PI, c.volume());
+}
+TEST(SphereTest, VolumeMethod)
+{
+    // 4/3 pi * 4 ^ 3 = 4/3 * pi * 64 = 256 / 3 * pi
+    Sphere c(4);
+    EXPECT_EQ(256 / 3 * M_PI, c.volume());
+}
+// End Of Volume
 // Area
 TEST(SphereTest, AreaPositiveSideZero)
 {
@@ -225,7 +248,7 @@ TEST(SphereTest, AreaMethod)
     // Surface area = 4 * pi * r^2
     // For 3 -> 4 * 3.1415 * 3* 3 -> 
     Sphere c(3);
-    EXPECT_EQ(36 * PI, c.area());
+    EXPECT_EQ(36 * M_PI, c.area());
 }
 // End Of Area
 /* End Of Sphere Tests */
