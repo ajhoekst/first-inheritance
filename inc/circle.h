@@ -2,6 +2,9 @@
 
 #include "shape2d.h"
 
+// Here is a defintion of PI for use in method
+#define PI (3.1415)
+
 class Circle : public Shape2D {
 public:
     Circle(
