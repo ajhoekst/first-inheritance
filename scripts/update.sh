@@ -4,8 +4,7 @@ CHANGES=$(git diff-index --name-only HEAD --)
 if [ ! -z "$CHANGES" ]
 then
     echo "Saving changes..."
-    git add .
-    git commit -m "checkpoint"
+    git commit -am "checkpoint"
 else
     echo "No changes made..."
 fi
