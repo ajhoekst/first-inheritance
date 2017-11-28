@@ -181,9 +181,9 @@ TEST(CubeTest, AreaMethod)
     // for reference 
     // Surface area = 2 * (l*w + l*h + w*h)
     //              = 12 * (l^2)
-    // For 2 -> 48
+    // For 2 -> 24
     Cube c(2);
-    EXPECT_EQ(48, c.area());
+    EXPECT_EQ(24, c.area());
 }
 // End Of Area
 /* End Of Cube Tests */
@@ -226,13 +226,13 @@ TEST(SphereTest, VolumePositiveSideNegative)
     // Test different parameters being negative
     // Null case (all negative)
     Sphere c(-3);
-    EXPECT_EQ(36 * M_PI, c.volume());
+    EXPECT_EQ(108.0 / 3.0 * M_PI, c.volume());
 }
 TEST(SphereTest, VolumeMethod)
 {
     // 4/3 pi * 4 ^ 3 = 4/3 * pi * 64 = 256 / 3 * pi
     Sphere c(4);
-    EXPECT_EQ(256 / 3 * M_PI, c.volume());
+    EXPECT_EQ(256.0 / 3.0 * M_PI, c.volume());
 }
 // End Of Volume
 // Area
