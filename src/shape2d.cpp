@@ -8,8 +8,10 @@ Shape2D::Shape2D(
     int number_of_sides,
     double length,
     double width
-) : ShapeBase( -1 )
+) : ShapeBase( number_of_sides )
 {
+    length_ = fabs(length);
+    width_ = fabs(width);
 }
 
 Shape2D::~Shape2D()

@@ -1,8 +1,9 @@
 #include "circle.h"
+#include <cmath>
 
 Circle::Circle(
     double length
-) : Shape2D( -1, -1, -1 )
+) : Shape2D( 0, length, -1 )
 {
 }
 
@@ -12,15 +13,15 @@ Circle::~Circle()
 
 const char* Circle::getLabel() const
 {
-    return "";
+    return "Circle";
 }
 
 double Circle::perimeter() const
 {
-    return -1;
+    return 2 * M_PI * length_;
 }
 
 double Circle::area() const
 {
-    return -1;
+    return M_PI * pow(length_,2);
 }

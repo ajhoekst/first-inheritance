@@ -9,6 +9,8 @@ public:
     );
     ~Cube();
     virtual const char* getLabel() const;
-    virtual double area() const;
-    virtual double volume() const;
+
+    // Do not declare these methods here, because they can be inherited from box
+    // virtual double area() const;
+    // virtual double volume() const;
 };
